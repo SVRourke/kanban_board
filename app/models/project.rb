@@ -1,6 +1,4 @@
 class Project < ActiveRecord::Base
-    has_secure_password
-    has_many :projects
-    has_many :tasks, through: :projects
-    
+    belongs_to :user
+    has_many :tasks
 end
