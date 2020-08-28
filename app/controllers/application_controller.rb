@@ -44,6 +44,7 @@ class ApplicationController < Sinatra::Base
     if !User.find_by_username(params[:username]) && !User.find_by_email(params[:email])
       @user = User.create(params)
       session[:user_id] = @user.id
+      redirect "/"
     else
       redirect "/signup"
     end
