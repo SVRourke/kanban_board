@@ -36,5 +36,18 @@ class ApplicationController < Sinatra::Base
 
 
   # signup
+  get "/signup" do
+    erb :signup
+  end
+
+  post "/signup" do
+    if !User.find_by_username(params[:username]) && !User.find_by_email(params[:email])
+      @user = User.create(params)
+      session[:user_id] = @user.id
+    else
+      redirect "/signup"
+    end
+  end
+
 
 end
