@@ -11,11 +11,11 @@ class ApplicationController < Sinatra::Base
     set :session_secret, 'Development'
     # For better security, create an environement variable "SESSION_SECRET" set the value to SecureRandom.hex(64)
     # set :session_secret, ENV.fetch('SESSION_SECRET')
-    
   end
 
   get "/" do
-    erb :welcome
+    unauthorized_redirect
+    redirect "/users/#{session[:user_id]}"
   end
   # -----------------------------
   # login
@@ -33,6 +33,12 @@ class ApplicationController < Sinatra::Base
     else
       redirect back
     end
+  end
+
+  get "/logout" do
+    unauthorized_redirect
+    session.clear
+    redirect "/login"
   end
   
   
@@ -69,3 +75,4 @@ class ApplicationController < Sinatra::Base
     end
   end
 end
+
