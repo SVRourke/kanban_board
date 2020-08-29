@@ -27,6 +27,8 @@ class ProjectsController < ApplicationController
 
   # PATCH: /projects/5
   patch "/projects/:id" do
+    @project = Project.find_by_id(params[:id])
+    @project.update(params[:project_params])
     redirect "/projects/:id"
   end
 
