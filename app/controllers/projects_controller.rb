@@ -1,9 +1,9 @@
 class ProjectsController < ApplicationController
 
   # GET: /projects
-  get "/projects" do
-    erb :"/projects/index.html"
-  end
+  # get "/projects" do
+  #   erb :"/projects/index.html"
+  # end
 
   # GET: /projects/new
   get "/projects/new" do
@@ -32,6 +32,8 @@ class ProjectsController < ApplicationController
 
   # DELETE: /projects/5/delete
   delete "/projects/:id/delete" do
-    redirect "/projects"
+    @project = Project.find_by_id(params[:id])
+    @project.destroy
+    redirect "/"
   end
 end
