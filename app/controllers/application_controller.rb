@@ -17,12 +17,13 @@ class ApplicationController < Sinatra::Base
   get "/" do
     erb :welcome
   end
-
+  # -----------------------------
   # login
+  # -----------------------------
   get "/login" do
     erb :login
   end
-
+  
   post "/login" do
     puts params
     @user = User.find_by_username(params[:username])
@@ -33,9 +34,11 @@ class ApplicationController < Sinatra::Base
       redirect back
     end
   end
-
-
+  
+  
+  # -----------------------------
   # signup
+  # -----------------------------
   get "/signup" do
     erb :signup
   end
@@ -50,5 +53,19 @@ class ApplicationController < Sinatra::Base
     end
   end
 
+  def unauthorized_redirect
+    if !logged_in?
+      redirect "/login"
+    end
+  end
 
+  def logged_in?
+    !session[:user_id].nil?
+  end
+
+  def current_user
+    if logged_in?
+      User.find_by_id(session[:user_id])
+    end
+  end
 end
