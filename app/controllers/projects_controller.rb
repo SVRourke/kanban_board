@@ -17,11 +17,13 @@ class ProjectsController < ApplicationController
 
   # GET: /projects/5
   get "/projects/:id" do
+    @project = Project.
     erb :"/projects/show.html"
   end
 
   # GET: /projects/5/edit
   get "/projects/:id/edit" do
+    @project = Project.find_by_id(params[:id])
     erb :"/projects/edit.html"
   end
 
