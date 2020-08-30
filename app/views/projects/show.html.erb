@@ -1,5 +1,10 @@
 <h1><%= @project.title %></h1>
 <span>Started: <%= @project.created_at %></span>
 <p><%= @project.description %></p>
+<form action="/projects/<%= @project.id %>/delete" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="Delete">
+</form>
+
 
 <%= @project.tasks %>

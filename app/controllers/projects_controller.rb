@@ -1,15 +1,8 @@
 class ProjectsController < ApplicationController
-
-  # GET: /projects
-  # get "/projects" do
-  #   erb :"/projects/index.html"
-  # end
-
   # GET: /projects/new
   get "/projects/new" do
     erb :"/projects/new.html"
   end
-
   # POST: /projects
   post "/projects" do
     if !params[:title].nil?
@@ -18,19 +11,18 @@ class ProjectsController < ApplicationController
         :description => params[:description],
         :user => current_user
       )
-      
       redirect "/projects/#{@project.id}"
     else
       redirect "/projects/new"
     end
   end
-
   # GET: /projects/5
   get "/projects/:id" do
     @project = Project.find_by_id(params[:id])
     erb :"/projects/show.html"
   end
 
+# ========================================================
   # GET: /projects/5/edit
   get "/projects/:id/edit" do
     @project = Project.find_by_id(params[:id])
@@ -39,9 +31,10 @@ class ProjectsController < ApplicationController
 
   # PATCH: /projects/5
   patch "/projects/:id" do
+    binding.pry
     @project = Project.find_by_id(params[:id])
-    @project.update(params[:project_params])
-    redirect "/projects/:id"
+    @project.update(:title => params[:title], :description => params[:description])
+    redirect "/projects/#{@project.id}"
   end
 
   # DELETE: /projects/5/delete
@@ -51,3 +44,8 @@ class ProjectsController < ApplicationController
     redirect "/"
   end
 end
+
+  # GET: /projects
+  # get "/projects" do
+  #   erb :"/projects/index.html"
+  # end
