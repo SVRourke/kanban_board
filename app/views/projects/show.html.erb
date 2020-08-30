@@ -6,5 +6,26 @@
     <input type="submit" value="Delete">
 </form>
 
+<form action="/tasks" method="post">
+    <input type="hidden" name="project_id" value="<%= @project.id %>">
+    <label for="content">Content: </label>
+    <input type="text" name="content" id="content">
+    <input type="submit" value="Add Task">
+</form>
+<% states = ["To-Do", "In-Progress", "Completed"]%>
+<% @project.tasks.each do |task| %>
+    <p><%= task.content %>:<%= states[task.doneness.to_i] %></p>
+    <form action="/tasks/<%= task.id %>/delete" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <input type="submit" value="remove">
+    </form>
+    <form action="/tasks/<%= task.id %>/move-up" method="post">
+        <input type="hidden" name="_method" value="patch">
+        <input type="submit" value="move-up">
+    </form>
+    <br>
+<% end %>
 
-<%= @project.tasks %>
+
+
+
