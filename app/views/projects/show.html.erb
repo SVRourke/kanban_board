@@ -1,9 +1,10 @@
+<link rel="stylesheet" href="/stylesheets/board.css">
 <h1><%= @project.title %></h1>
 <span>Started: <%= @project.created_at %></span>
 <p><%= @project.description %></p>
 <form action="/projects/<%= @project.id %>/delete" method="post">
     <input type="hidden" name="_method" value="delete">
-    <input type="submit" value="Delete">
+    <button type="submit" value="Delete"><span class="glyphicon glyphicon-trash"></span></button>
 </form>
 
 <form action="/tasks" method="post">
@@ -12,18 +13,53 @@
     <input type="text" name="content" id="content">
     <input type="submit" value="Add Task">
 </form>
+<br>
 <% states = ["To-Do", "In-Progress", "Completed"]%>
+
+<div class="row">
+    <div class="state-column col-sm-4">
+        <h4>TODO</h4>
+        <% @project.tasks.each do |task| %>
+            <% if task.doneness.to_i == 0 %>
+                <p><%= task.content %></p>
+            <br>
+            <% end %>
+        <% end %>
+    </div>
+    <div class="state-column col-sm-4">
+        <h4>In-Progress</h4>
+        <% @project.tasks.each do |task| %>
+            <% if task.doneness.to_i == 1 %>
+                <p><%= task.content %></p>
+            <br>
+            <% end %>
+        <% end %>
+    </div>
+    <div class="state-column col-sm-4">
+        <h4>Complete</h4>
+        <% @project.tasks.each do |task| %>
+            <% if task.doneness.to_i == 2 %>
+                <p><%= task.content %></p>
+            <br>
+            <% end %>
+        <% end %>
+    </div>
+    
+</div>
+
+<h3>ToDo</h3>
+
 <% @project.tasks.each do |task| %>
     <p><%= task.content %>:<%= states[task.doneness.to_i] %></p>
     <form action="/tasks/<%= task.id %>/delete" method="post">
         <input type="hidden" name="_method" value="delete">
-        <input type="submit" value="remove">
+        <button type="submit" value="Delete"><span class="glyphicon glyphicon-trash"></span></button>
     </form>
     <form action="/tasks/<%= task.id %>/move-up" method="post">
         <input type="hidden" name="_method" value="patch">
-        <input type="submit" value="move-up">
+        <button type="submit" value="move-up"><span class="glyphicon glyphicon-chevron-right"></span></button>
     </form>
-    <a href="/tasks/<%= task.id%>/edit">Edit</a>
+    <a href="/tasks/<%= task.id%>/edit"><span class="glyphicon glyphicon-edit"></span></a>
     <br>
 <% end %>
 
