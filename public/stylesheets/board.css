@@ -3,7 +3,27 @@ button {
     background-color: inherit;
 }
 .state-column {
-    min-height: 30vh;
-    margin: 10px;
+    padding-top: 1.5em;
+    min-height: 45vh;
     border: solid #ccc 1px;
+}
+.state-column h4 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 1em;
+}
+.product-card {
+    display:flex;
+    width: 100%;
+    padding-bottom: .53em;
+}
+
+.product-card p {
+    width: 80%;
+    word-break: break-all;
+
+}
+div.row {
+    display: flex;
+    justify-content: space-evenly;
 }
