@@ -18,25 +18,29 @@ class TasksController < ApplicationController
 
   # GET: /tasks/5/edit
   get "/tasks/:id/edit" do
+    @task = Task.find_by_id(params[:id])
     erb :"/tasks/edit.html"
   end
 
   # PATCH: /tasks/5
   patch "/tasks/:id" do
-    redirect "/tasks/:id"
+    @task = Task.find_by_id(params[:id])
+    @task.update(params[:task])
+    redirect "/projects/#{@task.project_id}"
   end
-# PATCH: /tasks/5
-patch "/tasks/:id/move-up" do
-  @task = Task.find_by_id(params[:id])
-  # binding.pry
-  current_stage = @task.doneness.to_i
-  if @task.doneness.to_i < 2
-    @task.update(:doneness => current_stage += 1)
-    redirect back
-  else
-    redirect back
+
+  # PATCH: /tasks/5
+  patch "/tasks/:id/move-up" do
+    @task = Task.find_by_id(params[:id])
+    # binding.pry
+    current_stage = @task.doneness.to_i
+    if @task.doneness.to_i < 2
+      @task.update(:doneness => current_stage += 1)
+      redirect back
+    else
+      redirect back
+    end
   end
-end
   # DELETE: /tasks/5/delete
   delete "/tasks/:id/delete" do
     @task = Task.find_by_id(params[:id])
