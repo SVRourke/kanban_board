@@ -12,12 +12,22 @@ class ProjectsController < ApplicationController
 
   # POST: /projects
   post "/projects" do
-    redirect "/projects"
+    if !params[:title].nil?
+      @project = Project.create(
+        :title => params[:title],
+        :description => params[:description],
+        :user => current_user
+      )
+      
+      redirect "/projects/#{@project.id}"
+    else
+      redirect "/projects/new"
+    end
   end
 
   # GET: /projects/5
   get "/projects/:id" do
-    @project = Project.
+    @project = Project.find_by_id(params[:id])
     erb :"/projects/show.html"
   end
 
