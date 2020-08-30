@@ -1,43 +1,30 @@
-.container-wrapper {
-    width: 100vw;
+main.wrapper {
     height: 100vh;
-    display: grid;
+    width: 100%;
+    display:grid;
     place-items: center;
 }
 form {
-    box-shadow: 17px 20px 3px 0px rgba(0,0,0,0.75);
-    border-radius: .3em;
-    padding: 30% 3em;
-    height: 60vh;
-    width: 50vw;
-    background-color: rgb(233, 233, 233);
-    display: flex;
-    flex-flow: column;
-    justify-content: space-around;
+    width: 30%;
 }
 form h1 {
-    font-size: 6em;
+    font-size: 4em;
     font-weight: 600;
     margin-bottom: .5em;
 }
 form input {
-    border-radius: .75em;
-    border-style: none;
-    border-color: #ccc;
-    padding: .5em .7em;
     font-size: 1.25em;
     font-weight: 600;
     color: #000;
     margin-bottom: 1.2em;
 }
-form button {
-    padding: .45em 2em;
-    border-radius: 2em;
-    width: 40%;
-    margin: 0 auto;
+form a {
+    margin-top: 6em;
 }
+/* 
+
 form a {
     margin-top: 1em;
     text-align: center;
     font-size: 18px;
-}
+} */ 

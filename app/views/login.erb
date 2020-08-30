@@ -1,12 +1,17 @@
 <link rel="stylesheet" href="stylesheets/login.css">
-<main class="container-wrapper">
-    <section class="card">
-        <form action="/login" method="post">
-            <h1>Hello!</h1>
-            <input type="text" name="username" id="username"placeholder="username:">
-            <input type="password" name="password" id="password" placeholder="password:">
-            <button type="submit">login</button>
-            <a href="/signup">Sign Up?</a>
-        </form>
-    </section>
+<main class="text-center wrapper">
+    <form class="form-signin" action="/login" method="post">
+        <img class="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+        <h1>Hello!</h1>
+        
+        <label for="username" class="sr-only">Username</label>      
+        <input class="form-control" type="text" name="username" id="username"placeholder="username:"required>
+
+        <label for="password" class="sr-only">Password</label>
+        <input class="form-control" type="password" name="password" id="password" placeholder="password:" required>
+        
+        <button class="btn btn-lg btn-primary btn-block" type="submit">login</button>
+        <br>
+        <a class="mt-5 mb-3 text-muted" href="/signup">Sign Up?</a>
+    </form>
 </main>
