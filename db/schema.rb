@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20200828025837) do
   end
 
   create_table "tasks", force: :cascade do |t|
-    t.integer  "list_id"
+    t.integer  "project_id"
     t.integer  "user_id"
     t.string   "content"
     t.string   "doneness"
