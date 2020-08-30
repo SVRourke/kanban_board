@@ -3,5 +3,5 @@
 
 <h3>Boards</h3>
 <% @user.projects.each do |project| %>
-    <p><%= project.title %></p>
+    <a href="/projects/<%= project.id %>"><%= project.title %></a>
 <% end %>
