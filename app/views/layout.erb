@@ -18,11 +18,17 @@
 
   <div class="container-fluid">
     <div class="row content">
-      <%= erb :"sections/sidebar" %>
 
-      <div class="col-sm-9">
+      <% if request.path != "/login" && request.path != "/signup" %>
+        <%= erb :"sections/sidebar" %>
+        
+        <div class="col-sm-9">
+          <%= yield %>
+        </div>
+      <% else %>
         <%= yield %>
-      </div>
+      <% end %>
+
 
     </div>    
   </div>
