@@ -1,1 +1,14 @@
-<h1>Insert the form to edit an instance of your model here.</h1>
+<h1>Edit Task.</h1>
+
+<form action="/tasks/<%= @task.id %>" method="post">
+    <input type="hidden" name="_method" value="patch">
+    <label for="task[doneness]">Progress</label>
+    <select name="task[doneness]" id="doneness">
+        <option value="0">To-Do</option>
+        <option value="1">In-Progress</option>
+        <option value="2">Completed</option>
+    </select>
+    <label for="task[content]">Content</label>
+    <textarea name="task[content]" id="content" cols="60" rows="5"><%= @task.content %></textarea>
+    <input type="submit" value="Update">
+</form>
