@@ -1,1 +1,4 @@
-<h1>This is the show page for an individual instance of your model.</h1>
+<h1><%= @project.title %></h1>
+<span>Started: <%= @project.created_at %></span>
+
+<%= @project.items %>
