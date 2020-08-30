@@ -1,0 +1,12 @@
+<section class="product-card">
+    <p><%= task.content %></p>
+    <form action="/tasks/<%= task.id %>/delete" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <button type="submit" value="Delete"><span class="glyphicon glyphicon-trash"></span></button>
+    </form>
+    <form action="/tasks/<%= task.id %>/move-up" method="post">
+        <input type="hidden" name="_method" value="patch">
+        <button type="submit" value="move-up"><span class="glyphicon glyphicon-chevron-right"></span></button>
+    </form>
+    <a href="/tasks/<%= task.id%>/edit"><span class="glyphicon glyphicon-edit"></span></a>
+</section>
