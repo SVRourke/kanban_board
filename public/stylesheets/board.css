@@ -6,6 +6,7 @@ button {
     padding-top: 1.5em;
     min-height: 45vh;
     border: solid #ccc 1px;
+    border-top-left-radius: .25em;
 }
 .state-column h4 {
     font-size: 24px;
@@ -13,17 +14,43 @@ button {
     margin-bottom: 1em;
 }
 .product-card {
+    border: solid #ccc 1px;
     display:flex;
     width: 100%;
     padding-bottom: .53em;
+    flex-flow: column;
 }
 
 .product-card p {
-    width: 80%;
+    padding: .8em .6em;
+    width: 100%;
     word-break: break-all;
 
 }
 div.row {
     display: flex;
     justify-content: space-evenly;
+}
+
+.modal_trigger {
+    position: absolute;
+    top: 1em;
+    right: 1em;
+}
+.task_controls {
+    padding-top: 1em;
+    border-top: solid #ccc 1px;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.todo {
+    border-left: solid rgb(59, 184, 54) 5px;
+}
+.doing {
+    border-left: solid rgb(182, 192, 48) 5px;
+}
+.done {
+    border-left: solid rgb(167, 42, 42) 5px;
 }

@@ -7,66 +7,61 @@
     <button type="submit" value="Delete"><span class="glyphicon glyphicon-trash"></span></button>
 </form>
 
-<form action="/tasks" method="post">
-    <input type="hidden" name="project_id" value="<%= @project.id %>">
-    <label for="content">Content: </label>
-    <input type="text" name="content" id="content">
-    <input type="submit" value="Add Task">
-</form>
 <br>
-<% states = ["To-Do", "In-Progress", "Completed"]%>
-
-<div class="row">
-    <div class="state-column col-sm-3">
-        <h4>TODO</h4>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-        +
-        </button>
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        <h3 class="modal-title" id="exampleModalLabel">Add Task</h3>
-                    </div>
-                    <form action="/tasks" method="post">
-                        <input type="hidden" name="project_id" value="<%= @project.id %>">
-                        <div class="modal-body">
-
-                                <br>
-                                <textarea type="text" cols="50" name="content" id="content"></textarea>
-                        </div>
-                        
-                        <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary">Save changes</button>
-                        </div>
-                    </form>
-                </div>
+            
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h3 class="modal-title" id="exampleModalLabel">Add Task</h3>
             </div>
+            <form action="/tasks" method="post">
+                <input type="hidden" name="project_id" value="<%= @project.id %>">
+                <div class="modal-body">
+
+                        <br>
+                        <textarea type="text" cols="50" name="content" id="content"></textarea>
+                </div>
+                
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
         </div>
+    </div>
+</div>
 
-
+<% states = ["To-Do", "In-Progress", "Completed"]%>
+<div class="row">
+    <div class="state-column col-sm-3 todo">
+        <h4>TODO</h4>
+        <button type="button" class="modal_trigger btn-primary" data-toggle="modal" data-target="#exampleModal">
+            <span class="glyphcon glyphicon-plus"></span>
+        </button>
         <% @project.tasks.each do |task| %>
             <% if task.doneness.to_i == 0 %>
                 <section class="product-card">
                     <p><%= task.content %></p>
-                    <form action="/tasks/<%= task.id %>/delete" method="post">
-                        <input type="hidden" name="_method" value="delete">
-                        <button type="submit" value="Delete"><span class="glyphicon glyphicon-trash"></span></button>
-                    </form>
-                    <form action="/tasks/<%= task.id %>/move-up" method="post">
-                        <input type="hidden" name="_method" value="patch">
-                        <button type="submit" value="move-up"><span class="glyphicon glyphicon-chevron-right"></span></button>
-                    </form>
-                    <a href="/tasks/<%= task.id%>/edit"><span class="glyphicon glyphicon-edit"></span></a>
+                    <div class="task_controls">
+                        <form action="/tasks/<%= task.id %>/delete" method="post">
+                            <input type="hidden" name="_method" value="delete">
+                            <button type="submit" value="Delete"><span class="glyphicon glyphicon-trash"></span></button>
+                        </form>
+                        <form action="/tasks/<%= task.id %>/move-up" method="post">
+                            <input type="hidden" name="_method" value="patch">
+                            <button type="submit" value="move-up"><span class="glyphicon glyphicon-chevron-right"></span></button>
+                        </form>
+                        <a href="/tasks/<%= task.id%>/edit"><span class="glyphicon glyphicon-edit"></span></a>
+                    </div>
                 </section>
             <br>
             <% end %>
         <% end %>
     </div>
-    <div class="state-column col-sm-3">
+    <div class="state-column col-sm-3 doing">
         <h4>In-Progress</h4>
         <% @project.tasks.each do |task| %>
             <% if task.doneness.to_i == 1 %>
@@ -86,7 +81,7 @@
             <% end %>
         <% end %>
     </div>
-    <div class="state-column col-sm-3">
+    <div class="state-column col-sm-3 done">
         <h4>Complete</h4>
         <% @project.tasks.each do |task| %>
             <% if task.doneness.to_i == 2 %>
