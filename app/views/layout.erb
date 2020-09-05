@@ -16,15 +16,23 @@
   </head>
 <body>
 
+
   <div class="container-fluid">
     <div class="row content">
 
       <% if request.path != "/login" && request.path != "/signup" %>
-        <div class="col-sm-2 sidenav">
-          <%= erb :"sections/sidebar" %>
-        </div>
+      <div class="container-fluid">
+        <div class="jumbotron">
+          <a href="/">
+            <h3><%= current_user.username %></h3>
+          </a>
+          <a href="/logout">logout</a>
         
-        <div class="col-sm-10">
+        </div>
+      </div>
+    
+
+      <div class="col-sm-10">
           <%= yield %>
         </div>
         
