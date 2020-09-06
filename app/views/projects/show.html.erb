@@ -14,6 +14,8 @@
         <button type="submit" value="Delete">Delete?</button>
     </form>
 
+    <a id="logout" href="/logout">Log Out?</a>
+
         
 </header>
 
@@ -67,18 +69,20 @@
         <div class="kanban__column-content">
             <% @project.tasks.each do |task| %>
                 <% if task.doneness.to_i == 1 %>
-                    <section class="product-card">
+                    <section class="task__card">
                         <p><%= task.content %></p>
-                        <form action="/tasks/<%= task.id %>/delete" method="post">
-                            <input type="hidden" name="_method" value="delete">
-                            <button type="submit" value="Delete"><span class="glyphicon glyphicon-trash"></span></button>
-                        </form>
-                        <form action="/tasks/<%= task.id %>/move-up" method="post">
-                            <input type="hidden" name="_method" value="patch">
-                            <button type="submit" value="move-up"><span class="glyphicon glyphicon-chevron-right"></span></button>
-                        </form>
-                        <a href="/tasks/<%= task.id%>/edit"><span class="glyphicon glyphicon-edit"></span></a>
-                    </section>
+                        <div class="task__card--controls">
+                            <form action="/tasks/<%= task.id %>/delete" method="post">
+                                <input type="hidden" name="_method" value="delete">
+                                <button type="submit" value="Delete">X</span></button>
+                            </form>
+                            <form action="/tasks/<%= task.id %>/move-up" method="post">
+                                <input type="hidden" name="_method" value="patch">
+                                <button type="submit" value="move-up">--></span></button>
+                            </form>
+                            <a href="/tasks/<%= task.id%>/edit">Edit</a>
+                        </div>
+                    </section>                    
                 <br>
                 <% end %>
             <% end %>
@@ -93,17 +97,19 @@
         <div class="kanban__column-content">
             <% @project.tasks.each do |task| %>
                 <% if task.doneness.to_i == 2 %>
-                    <section class="product-card">
+                    <section class="task__card">
                         <p><%= task.content %></p>
-                        <form action="/tasks/<%= task.id %>/delete" method="post">
-                            <input type="hidden" name="_method" value="delete">
-                            <button type="submit" value="Delete"><span class="glyphicon glyphicon-trash"></span></button>
-                        </form>
-                        <form action="/tasks/<%= task.id %>/move-up" method="post">
-                            <input type="hidden" name="_method" value="patch">
-                            <button type="submit" value="move-up"><span class="glyphicon glyphicon-chevron-right"></span></button>
-                        </form>
-                        <a href="/tasks/<%= task.id%>/edit"><span class="glyphicon glyphicon-edit"></span></a>
+                        <div class="task__card--controls">
+                            <form action="/tasks/<%= task.id %>/delete" method="post">
+                                <input type="hidden" name="_method" value="delete">
+                                <button type="submit" value="Delete">X</span></button>
+                            </form>
+                            <form action="/tasks/<%= task.id %>/move-up" method="post">
+                                <input type="hidden" name="_method" value="patch">
+                                <button type="submit" value="move-up">--></span></button>
+                            </form>
+                            <a href="/tasks/<%= task.id%>/edit">Edit</a>
+                        </div>
                     </section>
                 <br>
                 <% end %>

@@ -1,9 +1,11 @@
 header {
-    width: 100vw;
+    margin: 0 auto;
+    width: 50vw;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding-left:1em;
+    text-align: center;
+    padding: 0 auto;
 }
 header h1 {
     padding-top: .5em;
@@ -16,6 +18,7 @@ header a {
     padding-bottom:.4em;
 }
 header button {
+    margin: 0 auto;
     width: 8em;
     padding: .3em .2em;
     background-color: #fff;
@@ -25,6 +28,11 @@ header button {
 button:hover {
     background-color: #000;
     color: #fff;
+}
+#logout {
+    position: absolute;
+    top: 10px;
+    right: 10px;
 }
 
 #add_task {
@@ -90,21 +98,21 @@ button:hover {
 }
 
 .task__card p {
-    padding: .5em .3em;
+    padding: .5em .3em 1em .3em;
 }
 .task__card--controls {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 } 
-.task__card--controls form, a {
+.task__card--controls form, .task__card--controls a {
     text-align: center;
     width: 33%;
     margin: 0;
     text-decoration: none;
     color: black;
 }
-.task__card--controls button:hover, a:hover {
+.task__card--controls button:hover, .task__card--controls a:hover {
     text-decoration: none;
     color: white;
     background-color: black;
