@@ -3,25 +3,3 @@
     margin: 0;
     box-sizing: border-box;
 }
-
-
-
-/* Set height of the grid so .sidenav can be 100% (adjust if needed) */
-.content {height: 100vh}
-
-/* Set black background color, white text and some padding */
-footer {
-    background-color: #555;
-    color: white;
-    padding: 15px;
-}
-
-nav {
-    padding-top: 1em;
-    width: 50%;
-    display: flex;
-}
-
-nav a {
-    margin-right: 2em;
-}
