@@ -1,11 +1,21 @@
-<link rel="stylesheet" href="/stylesheets/board.css">
-<h1><%= @project.title %></h1>
-<span>Started: <%= @project.created_at %></span>
-<p><%= @project.description %></p>
-<form action="/projects/<%= @project.id %>/delete" method="post">
-    <input type="hidden" name="_method" value="delete">
-    <button type="submit" value="Delete"><span class="glyphicon glyphicon-trash"></span></button>
-</form>
+<head>
+    <link rel="stylesheet" href="/stylesheets/board.css">
+</head>
+
+<header>
+    <h1><%= @project.title %></h1>
+    <h3><%= @project.description %></h3>
+    <span>Started: <%= @project.created_at %></span>
+    <br>
+    <a href="/users/<%= current_user.id %>"><%= current_user.username %></a>
+
+    <form action="/projects/<%= @project.id %>/delete" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <button type="submit" value="Delete">Delete?</button>
+    </form>
+
+</header>
+<!--
 
 <br>
             
@@ -104,3 +114,4 @@
     
 </div>
 
+-->
