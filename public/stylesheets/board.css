@@ -1,56 +1,57 @@
-/* button {
-    border:none;
-    background-color: inherit;
-}
-.state-column {
-    padding-top: 1.5em;
-    min-height: 45vh;
-    border: solid #ccc 1px;
-    border-top-left-radius: .25em;
-}
-.state-column h4 {
-    font-size: 24px;
-    font-weight: 700;
-    margin-bottom: 1em;
-}
-.product-card {
-    border: solid #ccc 1px;
-    display:flex;
-    width: 100%;
-    padding-bottom: .53em;
-    flex-flow: column;
-}
-
-.product-card p {
-    padding: .8em .6em;
-    width: 100%;
-    word-break: break-all;
-
-}
-div.row {
+header {
+    width: 100vw;
     display: flex;
-    justify-content: space-evenly;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-left:1em;
+}
+header h1 {
+    padding-top: .5em;
+}
+header h3 {
+    padding-top: .1em
+}
+header a {
+    padding-top: .3em;
+    padding-bottom:.4em;
+}
+header button {
+    width: 8em;
+    padding: .3em .2em;
+    background-color: #fff;
+    color: #000;
+    border: solid black 1px;
+}
+button:hover {
+    background-color: #000;
+    color: #fff;
 }
 
-.modal_trigger {
-    position: absolute;
-    top: 1em;
-    right: 1em;
+#add_task {
+    padding: 2em 1em;
+    width: 30vw;
 }
-.task_controls {
-    padding-top: 1em;
-    border-top: solid #ccc 1px;
-    width: 100%;
-    display: flex;
-    justify-content: space-evenly;
+#add_task h4 {
+    padding-bottom: 1em;
 }
-
-.todo {
-    border-left: solid rgb(59, 184, 54) 5px;
+#add_task form {
+    flex-direction: row;
 }
-.doing {
-    border-left: solid rgb(182, 192, 48) 5px;
+#add_task form input {
+    width:75%;
+    height:2em;
+    border: solid black 1px;
+    padding-left: .5em;
 }
-.done {
-    border-left: solid rgb(167, 42, 42) 5px;
-} */
+#add_task form button {
+    width:25%;
+    height:2em;
+    background-color: #fff;
+    border: solid black 1px;
+}
+#add_task form button:hover {
+    width:25%;
+    height:2em;
+    background-color: #000;
+    color: #fff;
+}
