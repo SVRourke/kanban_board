@@ -1,11 +1,15 @@
-<h1>new project!</h1>
+<head>
+    <link rel="stylesheet" href="/stylesheets/login.css">
+</head>
+<main id="login">
+    <form id="login-form" action="/projects" method="post">
+        <h1>new project!</h1>
+        <label for="title">Project Name:</label>
+        <input type="text" name="title" id="title">
 
-<form action="/projects" method="post">
-    <label for="title">Project Name:</label>
-    <input type="text" name="title" id="title">
+        <label for="description">Project description:</label>
+        <input type="text" name="description" id="description">
 
-    <label for="description">Project description:</label>
-    <input type="text" name="description" id="description">
-
-    <input type="submit" value="submit">
-</form>
+        <button type="submit" value="submit">Create Project</button>
+    </form>
+</main>
