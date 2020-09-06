@@ -8,6 +8,7 @@
     height: 50vh;
     border: solid black 2px;
     padding: 3em 1.5em;
+    justify-content: space-evenly;
 }
 #login-form h1 {
     font-size: 3em;
