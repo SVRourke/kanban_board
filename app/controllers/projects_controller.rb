@@ -7,7 +7,7 @@ class ProjectsController < ApplicationController
   end
   
   # POST: /projects
-  post "/projects" 
+  post "/projects" do
   unauthorized_redirect
     if !params[:title].nil?
       @project = Project.create(
