@@ -25,20 +25,53 @@
         <button type="submit" class="btn btn-primary">Add Task</button>
     </form>       
 </section>
-        
-<!--
+
+
 <% states = ["To-Do", "In-Progress", "Completed"]%>
-<div class="row">
-    <div class="state-column col-sm-3 todo">
-        <h4>TODO</h4>
-        <button type="button" class="modal_trigger btn-primary" data-toggle="modal" data-target="#exampleModal">
-            <span class="glyphcon glyphicon-plus"></span>
-        </button>
-        <% @project.tasks.each do |task| %>
-            <% if task.doneness.to_i == 0 %>
-                <section class="product-card">
-                    <p><%= task.content %></p>
-                    <div class="task_controls">
+
+<main id="kanban">
+    <section class="kanban__column">
+        <div class="kanban__column-header">
+            <h4>TODO</h4>
+            <button type="button" class="modal_trigger btn-primary" data-toggle="modal" data-target="#exampleModal">
+                <span class="glyphcon glyphicon-plus"></span>
+            </button>
+        </div>
+
+        <div class="kanban__column-content">
+            <% @project.tasks.each do |task| %>
+                <% if task.doneness.to_i == 0 %>
+                    <section class="product-card">
+                        <p><%= task.content %></p>
+                        <div class="task_controls">
+                            <form action="/tasks/<%= task.id %>/delete" method="post">
+                                <input type="hidden" name="_method" value="delete">
+                                <button type="submit" value="Delete"><span class="glyphicon glyphicon-trash"></span></button>
+                            </form>
+                            <form action="/tasks/<%= task.id %>/move-up" method="post">
+                                <input type="hidden" name="_method" value="patch">
+                                <button type="submit" value="move-up"><span class="glyphicon glyphicon-chevron-right"></span></button>
+                            </form>
+                            <a href="/tasks/<%= task.id%>/edit"><span class="glyphicon glyphicon-edit"></span></a>
+                        </div>
+                    </section>
+                <br>
+                <% end %>
+            <% end %>
+        </div>
+        
+    </section>
+
+    <section class="kanban__column">
+        <div class="kanban__column-header">
+            <h4>In-Progress</h4>
+        </div>
+        
+        <div class="kanban__column-content">
+            <% @project.tasks.each do |task| %>
+                <% if task.doneness.to_i == 1 %>
+                    <section class="product-card">
+                        <p><%= task.content %></p>
                         <form action="/tasks/<%= task.id %>/delete" method="post">
                             <input type="hidden" name="_method" value="delete">
                             <button type="submit" value="Delete"><span class="glyphicon glyphicon-trash"></span></button>
@@ -48,52 +81,43 @@
                             <button type="submit" value="move-up"><span class="glyphicon glyphicon-chevron-right"></span></button>
                         </form>
                         <a href="/tasks/<%= task.id%>/edit"><span class="glyphicon glyphicon-edit"></span></a>
-                    </div>
-                </section>
-            <br>
+                    </section>
+                <br>
+                <% end %>
             <% end %>
-        <% end %>
-    </div>
-    <div class="state-column col-sm-3 doing">
-        <h4>In-Progress</h4>
-        <% @project.tasks.each do |task| %>
-            <% if task.doneness.to_i == 1 %>
-                <section class="product-card">
-                    <p><%= task.content %></p>
-                    <form action="/tasks/<%= task.id %>/delete" method="post">
-                        <input type="hidden" name="_method" value="delete">
-                        <button type="submit" value="Delete"><span class="glyphicon glyphicon-trash"></span></button>
-                    </form>
-                    <form action="/tasks/<%= task.id %>/move-up" method="post">
-                        <input type="hidden" name="_method" value="patch">
-                        <button type="submit" value="move-up"><span class="glyphicon glyphicon-chevron-right"></span></button>
-                    </form>
-                    <a href="/tasks/<%= task.id%>/edit"><span class="glyphicon glyphicon-edit"></span></a>
-                </section>
-            <br>
+        </div>
+    </section>
+    <section class="kanban__column">
+        <div class="kanban__column-header">
+            <h4>Complete</h4>
+        </div>
+        
+        <div class="kanban__column-content">
+            <% @project.tasks.each do |task| %>
+                <% if task.doneness.to_i == 2 %>
+                    <section class="product-card">
+                        <p><%= task.content %></p>
+                        <form action="/tasks/<%= task.id %>/delete" method="post">
+                            <input type="hidden" name="_method" value="delete">
+                            <button type="submit" value="Delete"><span class="glyphicon glyphicon-trash"></span></button>
+                        </form>
+                        <form action="/tasks/<%= task.id %>/move-up" method="post">
+                            <input type="hidden" name="_method" value="patch">
+                            <button type="submit" value="move-up"><span class="glyphicon glyphicon-chevron-right"></span></button>
+                        </form>
+                        <a href="/tasks/<%= task.id%>/edit"><span class="glyphicon glyphicon-edit"></span></a>
+                    </section>
+                <br>
+                <% end %>
             <% end %>
-        <% end %>
-    </div>
-    <div class="state-column col-sm-3 done">
-        <h4>Complete</h4>
-        <% @project.tasks.each do |task| %>
-            <% if task.doneness.to_i == 2 %>
-                <section class="product-card">
-                    <p><%= task.content %></p>
-                    <form action="/tasks/<%= task.id %>/delete" method="post">
-                        <input type="hidden" name="_method" value="delete">
-                        <button type="submit" value="Delete"><span class="glyphicon glyphicon-trash"></span></button>
-                    </form>
-                    <form action="/tasks/<%= task.id %>/move-up" method="post">
-                        <input type="hidden" name="_method" value="patch">
-                        <button type="submit" value="move-up"><span class="glyphicon glyphicon-chevron-right"></span></button>
-                    </form>
-                    <a href="/tasks/<%= task.id%>/edit"><span class="glyphicon glyphicon-edit"></span></a>
-                </section>
-            <br>
-            <% end %>
-        <% end %>
-    </div>
+        </div>
+    </section>
+</main>
+        
+        
+        
+<!--
+<div class="row">
     
 </div>
 
