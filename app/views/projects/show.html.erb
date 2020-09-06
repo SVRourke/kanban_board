@@ -32,27 +32,24 @@
 <main id="kanban">
     <section class="kanban__column">
         <div class="kanban__column-header">
-            <h4>TODO</h4>
-            <button type="button" class="modal_trigger btn-primary" data-toggle="modal" data-target="#exampleModal">
-                <span class="glyphcon glyphicon-plus"></span>
-            </button>
+            <h4>ToDo</h4>
         </div>
 
         <div class="kanban__column-content">
             <% @project.tasks.each do |task| %>
                 <% if task.doneness.to_i == 0 %>
-                    <section class="product-card">
+                    <section class="task__card">
                         <p><%= task.content %></p>
-                        <div class="task_controls">
+                        <div class="task__card--controls">
                             <form action="/tasks/<%= task.id %>/delete" method="post">
                                 <input type="hidden" name="_method" value="delete">
-                                <button type="submit" value="Delete"><span class="glyphicon glyphicon-trash"></span></button>
+                                <button type="submit" value="Delete">X</span></button>
                             </form>
                             <form action="/tasks/<%= task.id %>/move-up" method="post">
                                 <input type="hidden" name="_method" value="patch">
-                                <button type="submit" value="move-up"><span class="glyphicon glyphicon-chevron-right"></span></button>
+                                <button type="submit" value="move-up">--></span></button>
                             </form>
-                            <a href="/tasks/<%= task.id%>/edit"><span class="glyphicon glyphicon-edit"></span></a>
+                            <a href="/tasks/<%= task.id%>/edit">Edit</a>
                         </div>
                     </section>
                 <br>
@@ -87,6 +84,7 @@
             <% end %>
         </div>
     </section>
+
     <section class="kanban__column">
         <div class="kanban__column-header">
             <h4>Complete</h4>

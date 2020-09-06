@@ -30,6 +30,7 @@ button:hover {
 #add_task {
     padding: 2em 1em;
     width: 30vw;
+    margin: 0 auto;
 }
 #add_task h4 {
     padding-bottom: 1em;
@@ -57,11 +58,62 @@ button:hover {
 }
 
 #kanban {
+    margin: 0 auto;
+    min-height: 80vh;
+    width: 95%;
+    max-width: 1000px;
     padding-left: 1em;
+    padding-right: 1em;
     display:grid;
     grid-template-columns: repeat(3, 1fr);
 }
 
-.kanban__column {}
-.kanban__column-header {}
-.kanban__column-content {}
+.kanban__column {
+    min-height: 10vh;
+    padding: 1em .5em;
+}
+.kanban__column-header {
+    background-color: #000;
+    color: #fff;
+    padding: .5em 0;
+    text-align: center;
+}
+.kanban__column-content {
+}
+
+.task__card {
+    margin-top: 1em;
+    border: solid black 1px;
+    display: flex;
+    flex-direction: column;    
+    justify-content: space-between;
+}
+
+.task__card p {
+    padding: .5em .3em;
+}
+.task__card--controls {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+} 
+.task__card--controls form, a {
+    text-align: center;
+    width: 33%;
+    margin: 0;
+    text-decoration: none;
+    color: black;
+}
+.task__card--controls button:hover, a:hover {
+    text-decoration: none;
+    color: white;
+    background-color: black;
+    border: solid black 1px;
+}
+.task__card--controls button {
+    border: none;
+    background-color: #fff;
+    color: black;
+    /* border: solid black 1px; */
+    width: 100%;
+}
