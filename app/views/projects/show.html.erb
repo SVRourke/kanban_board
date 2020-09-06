@@ -8,6 +8,7 @@
     <span>Started: <%= @project.created_at %></span>
     <br>
     <a href="/users/<%= current_user.id %>"><%= current_user.username %></a>
+    <a id="edit" href="/projects/<%= @project.id %>/edit">edit?</a>
 
     <form action="/projects/<%= @project.id %>/delete" method="post">
         <input type="hidden" name="_method" value="delete">
