@@ -1,7 +1,6 @@
 <h1><%= current_user.username %></h1>
 <nav>
     <a href="/logout">Log Out</a>
-    <a href="/users/<%= session[:user_id]%>/edit">Edit User</a>
     <a href="/projects/new">Start A Project</a>
     <form action="/users/<%= current_user.id %>/delete" method="post">
         <input type="hidden" name="_method" value="delete">
