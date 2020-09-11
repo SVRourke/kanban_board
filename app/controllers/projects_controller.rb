@@ -51,9 +51,3 @@ class ProjectsController < ApplicationController
     redirect "/"
   end
 end
-
-# ========================================================
-# GET: /projects
-# get "/projects" do
-  #   erb :"/projects/index.html"
-  # end
