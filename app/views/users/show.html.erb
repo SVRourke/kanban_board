@@ -2,3 +2,13 @@
 <a href="/logout">Log Out</a>
 <a href="/users/<%= session[:user_id]%>/edit">Edit User</a>
 <a href="/projects/new">Start A Project</a>
+
+
+<h3>Your Projects:</h3>
+<ul>
+    <% current_user.projects.each do |project| %>
+    <li>
+        <a href="/projects/<%= project.id %>"><%= project.title %></a>
+    </li>
+    <% end %>
+</ul>
