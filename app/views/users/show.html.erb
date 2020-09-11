@@ -1,8 +1,13 @@
 <h1><%= current_user.username %></h1>
-<a href="/logout">Log Out</a>
-<a href="/users/<%= session[:user_id]%>/edit">Edit User</a>
-<a href="/projects/new">Start A Project</a>
-
+<nav>
+    <a href="/logout">Log Out</a>
+    <a href="/users/<%= session[:user_id]%>/edit">Edit User</a>
+    <a href="/projects/new">Start A Project</a>
+    <form action="/users/<%= current_user.id %>/delete" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <button type="submit">Delete Account</button>
+    </form>
+</nav>
 
 <h3>Your Projects:</h3>
 <ul>
