@@ -1,3 +1,4 @@
+<head><link rel="stylesheet" href="/stylesheets/dash.css"></head>
 <h1><%= current_user.username %></h1>
 <nav>
     <a href="/logout">Log Out</a>
@@ -8,11 +9,17 @@
     </form>
 </nav>
 
-<h3>Your Projects:</h3>
-<ul>
+<article id="projects">
+    <h2>Your Projects:</h2>
     <% current_user.projects.each do |project| %>
-    <li>
-        <a href="/projects/<%= project.id %>"><%= project.title %></a>
-    </li>
+    <a href="/projects/<%= project.id %>">
+        <section class="project-card">
+            <h4><%= project.title %></h4>
+            <% tsks = project.tasks %>
+            <p>Queued Tasks: <%= tsks.filter {|t| t.doneness == "0" }.count %></p>
+            <p>In-Progress Tasks: <%= tsks.count %></p>
+            <%# <p>Completed Tasks: <%= project.tasks.count %></p> %>
+        </section>
+    </a>
     <% end %>
-</ul>
+</article>
