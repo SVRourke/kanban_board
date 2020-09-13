@@ -1,26 +1,34 @@
 #projects {
+    width: 100%;
+    height: 90vh;
     display: flex;
     flex-direction: column;
     padding: 3em 1.5em;
-    width: 50%;
+}
+#projects h2 {
+    text-align: center;
 }
 #projects a {
     text-decoration: none;
-    
 }
-a:visited {
+#projects a:visited {
     color: black;
   }
 .project-card {
     border: solid black 1px;
-    padding: 3em 1.5em;
+    padding: 1.5em 0.5em;
+    margin: 0 auto;
     margin-top: 2em;
     padding-left: 3em;
-
+    width: 350px;
+}
+.project-card:hover {
+    transform: scale(1.05);
+    box-shadow: 5px 5px #4a4a4a;
 }
 .project-card h4 {
-    /* text-align: center; */
     font-size: 2em;
 }
 .project-card p {
+    padding-top: 0.4em;
 }
