@@ -1,0 +1,8 @@
+#projects {
+    display: flex;
+    flex-direction: column;
+    padding: 3em 1.5em;
+}
+.project-card {
+    border: solid black 1px;
+}
