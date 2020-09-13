@@ -2,7 +2,34 @@
     display: flex;
     flex-direction: column;
     padding: 3em 1.5em;
+    width: 50%;
+}
+#projects a {
+    text-decoration: none;
 }
 .project-card {
     border: solid black 1px;
+    padding: 3em 1.5em;
+    margin-top: 2em;
+}
+.project-card h4 {
+    text-align: center;
+    font-size: 2em;
+}
+.counters {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.controls {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.bottom {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
 }
