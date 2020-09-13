@@ -6,30 +6,21 @@
 }
 #projects a {
     text-decoration: none;
+    
 }
+a:visited {
+    color: black;
+  }
 .project-card {
     border: solid black 1px;
     padding: 3em 1.5em;
     margin-top: 2em;
+    padding-left: 3em;
+
 }
 .project-card h4 {
-    text-align: center;
+    /* text-align: center; */
     font-size: 2em;
 }
-.counters {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-}
-.controls {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-}
-.bottom {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
+.project-card p {
 }
