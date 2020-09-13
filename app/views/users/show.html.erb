@@ -17,8 +17,8 @@
             <h4><%= project.title %></h4>
             <% tsks = project.tasks %>
             <p>Queued Tasks: <%= tsks.filter {|t| t.doneness == "0" }.count %></p>
-            <p>In-Progress Tasks: <%= tsks.count %></p>
-            <%# <p>Completed Tasks: <%= project.tasks.count %></p> %>
+            <p>In-Progress Tasks: <%= tsks.filter {|t| t.doneness == "1" }.count %></p>
+            <p>Completed Tasks: <%= tsks.filter {|t| t.doneness == "2" }.count %></p>
         </section>
     </a>
     <% end %>
