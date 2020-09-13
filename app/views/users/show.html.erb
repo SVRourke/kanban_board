@@ -16,17 +16,9 @@
         <section class="project-card">
             <h4><%= project.title %></h4>
             <% tsks = project.tasks %>
-            <div class="bottom">
-                <div class="counters">
-                    <p>Queued Tasks: <%= tsks.filter {|t| t.doneness == "0" }.count %></p>
-                    <p>In-Progress Tasks: <%= tsks.filter {|t| t.doneness == "1" }.count %></p>
-                    <p>Completed Tasks: <%= tsks.filter {|t| t.doneness == "2" }.count %></p>
-                </div>
-                <div class="controls">
-                    delete
-                    edit
-                </div>
-            </div>
+            <p>Queued Tasks: <%= tsks.filter {|t| t.doneness == "0" }.count %></p>
+            <p>In-Progress Tasks: <%= tsks.filter {|t| t.doneness == "1" }.count %></p>
+            <p>Completed Tasks: <%= tsks.filter {|t| t.doneness == "2" }.count %></p>
         </section>
     </a>
     <% end %>
