@@ -2,13 +2,20 @@
     <link rel="stylesheet" href="/stylesheets/login.css">
 </head>
 <main id="login">
+    
     <form id="login-form" action="/projects" method="post">
+        <% if session[:errors] %>
+                <% session[:errors].each do |error| %>
+                    <p><%= error %></p>
+                <% end %>
+            <% end %>
+            <% session[:errors] = []%>
         <h1>new project!</h1>
         <label for="title">Project Name:</label>
-        <input type="text" name="title" id="title">
+        <input type="text" name="title" id="title" value="">
 
         <label for="description">Project description:</label>
-        <input type="text" name="description" id="description">
+        <input type="text" name="description" id="description" value="">
 
         <button type="submit" value="submit">Create Project</button>
     </form>
