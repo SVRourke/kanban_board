@@ -9,13 +9,27 @@ class TasksController < ApplicationController
   # POST: /tasks
   post "/tasks" do
     unauthorized_redirect
-    @task = Task.create(
-      :user => current_user,
-      :project => Project.find_by_id(params[:project_id]),
-      :content => params[:content],
-      :doneness => 0
-    )
-    redirect "/projects/#{params[:project_id]}"
+    @project = Project.find_by_id(params[:project_id])
+    tasks_contents = @project.tasks.collect {|t| t.content}
+    if params[:content].length() > 0 && !tasks_contents.any? {|t| t == params[:content]}
+      @task = Task.create(
+        :user => current_user,
+        :project => @project,
+        :content => params[:content],
+        :doneness => 0
+      )
+      redirect "/projects/#{params[:project_id]}"
+    else
+      session[:errors] = []
+      if  params[:content].length() == 0
+        session[:errors] << "Task Cannot Be Blank."
+      end
+
+      if tasks_contents.any? {|t| t == params[:content]}
+        session[:errors] << "Task Already In Project."
+      end
+      redirect back
+    end
   end
 
   # GET: /tasks/5/edit
