@@ -9,7 +9,8 @@ class ProjectsController < ApplicationController
   # POST: /projects
   post "/projects" do
   unauthorized_redirect
-    if !params[:title].nil?
+
+    if params[:title].length() > 0
       @project = Project.create(
         :title => params[:title],
         :description => params[:description],
@@ -17,6 +18,15 @@ class ProjectsController < ApplicationController
       )
       redirect "/projects/#{@project.id}"
     else
+      session[:errors] = []
+      if params[:title].length() == 0
+        session[:errors] << "Project Must Have Title"
+      end
+
+      if params[:description].length() == 0
+        session[:errors] << "Project Must Have Description"
+      end
+
       redirect "/projects/new"
     end
   end
