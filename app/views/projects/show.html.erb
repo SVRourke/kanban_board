@@ -17,6 +17,12 @@
 
 <section id="add_task">
     <h4>Add Item</h4>
+        <% if session[:errors] %>
+                <% session[:errors].each do |error| %>
+                    <p><%= error %></p>
+                <% end %>
+            <% end %>
+            <% session[:errors] = []%>
     <form action="/tasks" method="post">
         <input type="hidden" name="project_id" value="<%= @project.id %>">
         <input type="text" cols="50" name="content" id="content" required>
