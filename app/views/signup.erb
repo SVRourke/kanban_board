@@ -11,6 +11,7 @@
                 <p><%= error %></p>
             <% end %>
         <% end %>
+        <% session[:errors] = []%>
         <label for="username" >Username</label>      
         <input type="text" name="username" id="username" placeholder="username:"required>
 
