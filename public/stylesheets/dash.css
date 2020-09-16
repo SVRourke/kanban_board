@@ -1,9 +1,10 @@
 #projects {
     width: 100%;
-    height: 90vh;
+    height: 85vh;
     display: flex;
     flex-direction: column;
     padding: 3em 1.5em;
+    overflow-y: scroll;
 }
 #projects h2 {
     text-align: center;
