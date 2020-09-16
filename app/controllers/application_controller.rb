@@ -66,6 +66,10 @@ class ApplicationController < Sinatra::Base
         session[:errors] << "Email Already In Use"
       end
 
+      if params[:password].length() < 5
+        session[:errors] << "Password Must Be Longer Than 5 Letters"
+      end
+      
       redirect "/signup"
     end
   end
