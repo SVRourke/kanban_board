@@ -56,16 +56,16 @@ class ApplicationController < Sinatra::Base
       redirect "/"
     else
       
-      errors = Array.new()
+      session[:errors] = Array.new()
       
       if User.find_by_username(params[:username])
         session[:errors] << "Username Taken"
       end
       
-      if User.find_by_email(params[:email]
+      if User.find_by_email(params[:email])
         session[:errors] << "Email Already In Use"
       end
-            
+
       redirect "/signup"
     end
   end
