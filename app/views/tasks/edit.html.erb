@@ -1,14 +1,27 @@
-<h1>Edit Task.</h1>
+<head>
+    <link rel="stylesheet" href="/stylesheets/login.css">
+</head>
 
-<form action="/tasks/<%= @task.id %>" method="post">
-    <input type="hidden" name="_method" value="patch">
-    <label for="task[doneness]">Progress</label>
-    <select name="task[doneness]" id="doneness">
-        <option value="0">To-Do</option>
-        <option value="1">In-Progress</option>
-        <option value="2">Completed</option>
-    </select>
-    <label for="task[content]">Content</label>
-    <textarea name="task[content]" id="content" cols="60" rows="5"><%= @task.content %></textarea>
-    <input type="submit" value="Update">
-</form>
+<main id="login">
+    <form id="login-form" action="/tasks/<%= @task.id %>" method="post">
+        <h2>Edit Task.</h2>
+        <input type="hidden" name="_method" value="patch">
+        
+        <label for="task[doneness]">Progress</label>
+        <select name="task[doneness]" id="doneness">
+            <option value="0">To-Do</option>
+            <option value="1">In-Progress</option>
+            <option value="2">Completed</option>
+        </select>
+        <% if session[:errors] %>
+            <% session[:errors].each do |error| %>
+                <p><%= error %></p>
+            <% end %>
+        <% end %>
+        <% session[:errors] = []%>        
+        <label for="task[content]">Content</label>
+        <textarea name="task[content]" id="content" cols="60" rows="5"><%= @task.content %></textarea>
+        <input type="submit" value="Update">
+    </form>
+
+</main>
