@@ -13,13 +13,14 @@
             <option value="1">In-Progress</option>
             <option value="2">Completed</option>
         </select>
+        
+        <label for="task[content]">Content</label>
         <% if session[:errors] %>
             <% session[:errors].each do |error| %>
                 <p><%= error %></p>
             <% end %>
         <% end %>
         <% session[:errors] = []%>        
-        <label for="task[content]">Content</label>
         <textarea name="task[content]" id="content" cols="60" rows="5"><%= @task.content %></textarea>
         <input type="submit" value="Update">
     </form>
