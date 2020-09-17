@@ -51,7 +51,6 @@ class TasksController < ApplicationController
   patch "/tasks/:id/move-up" do
     unauthorized_redirect
     @task = Task.find_by_id(params[:id])
-    # binding.pry
     current_stage = @task.doneness.to_i
     if @task.doneness.to_i < 2
       @task.update(:doneness => current_stage += 1)
@@ -60,6 +59,7 @@ class TasksController < ApplicationController
       redirect back
     end
   end
+
   # DELETE: /tasks/5/delete
   delete "/tasks/:id/delete" do
     unauthorized_redirect
@@ -68,12 +68,3 @@ class TasksController < ApplicationController
     redirect back
   end
 end
-# GET: /tasks
-  # get "/tasks" do
-  #   erb :"/tasks/index.html"
-  # end
-
-# GET: /tasks/5
-  # get "/tasks/:id" do
-  #   erb :"/tasks/show.html"
-  # end
