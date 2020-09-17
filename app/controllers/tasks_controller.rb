@@ -42,9 +42,14 @@ class TasksController < ApplicationController
   # PATCH: /tasks/5
   patch "/tasks/:id" do
     unauthorized_redirect
-    @task = Task.find_by_id(params[:id])
-    @task.update(params[:task])
-    redirect "/projects/#{@task.project_id}"
+    if params[:task][:content].length() > 0
+      @task = Task.find_by_id(params[:id])
+      @task.update(params[:task])
+      redirect "/projects/#{@task.project_id}"
+    else
+      session[:errors] << "Cannot Save Blank Task"
+      redirect back
+    end
   end
 
   # PATCH: /tasks/5
