@@ -5,13 +5,12 @@
 }
 #login-form {
     width: 350px;
-    height: 50vh;
+    max-height: 55vh;
     border: solid black 2px;
     padding: 3em 1.5em;
     justify-content: space-evenly;
 }
 #login-form h1 {
-    font-size: 3em;
     margin-bottom: 10%;
 }
 #login-form label {
