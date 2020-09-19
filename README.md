@@ -14,6 +14,29 @@ This is a project built to display my understanding of several concepts.
 <br>
 
 ## Installation
+1. clone this repository. 
 
+        git clone https://github.com/SVRourke/kanban_board.git
+2. cd into the project directory and run "bundle install
+3. At this point you can either start the program with shotgun or rackup.  
+4. **BONUS** if you'd like greater security you need to comment out the line in the application controller with the hardcoded session secret and set a random secret as an environment variable.
+
+        app/controllers/application_controller
+        # Comment this line out:
+        set :session_secret, 'Development'  
+        # Uncomment this line
+        set :session_secret, ENV.fetch('SESSION_SECRET')
+5. Then create an environment variable 'SESSION_SECRET' and set it to a random 64 byte hex. 
+
+        # Generate a key
+        ruby -e "require 'securerandom'; puts SecureRandom.hex(64)"  
+        
+        # copy the output to the clipboard
+        $> 6cbb8fa...(shortened for brevity)...55fb724
+
+        # create the environment variable
+        echo "export SESSION_SECRET=COPIED-VALUE" >> ~/.bashrc
+
+    
 ## Contributors Guide 
 ## license
