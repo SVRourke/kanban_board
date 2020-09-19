@@ -25,12 +25,17 @@ class ApplicationController < Sinatra::Base
   end
   
   post "/login" do
-    puts params
     @user = User.find_by_username(params[:username])
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
       redirect "/"
     else
+      session[:errors] = Array.new()
+      if !@user
+        session[:errors] << "No User With That Name"
+      elsif !@user.authenticate(params[:password])
+        session[:errors] << "Incorrect Password"
+      end
       redirect back
     end
   end
