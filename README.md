@@ -39,4 +39,7 @@ This is a project built to display my understanding of several concepts.
 
     
 ## Contributors Guide 
+Contribution is welcome, fork the repo, create a branch, go ham.  
+if you think your changes would be a good addition to the project, drop me a line. If you'd like to use this as a starting point for your own project? GO Ahead! I do not intend to turn this into a product or business, this was purely an educational exercise.
+
 ## license
