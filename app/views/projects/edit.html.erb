@@ -5,7 +5,14 @@
 <main id="login">
 
     <form id="login-form" action="/projects/<%= @project.id %>" method="post">
+        
         <h1>edit: <%= @project.title %>.</h1>
+        <% if session[:errors] %>
+                <% session[:errors].each do |error| %>
+                    <p><%= error %></p>
+                <% end %>
+        <% end %>
+        <% session[:errors] = []%>
         <input type="hidden" name="_method" value="PATCH">
         
         <label for="title">Edit Title:</label>
