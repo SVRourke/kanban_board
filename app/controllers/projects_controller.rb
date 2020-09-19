@@ -48,9 +48,20 @@ class ProjectsController < ApplicationController
   # PATCH: /projects/5
   patch "/projects/:id" do
     unauthorized_redirect
-    @project = Project.find_by_id(params[:id])
-    @project.update(:title => params[:title], :description => params[:description])
-    redirect "/projects/#{@project.id}"
+    session[:errors] = Array.new()
+    if params[:title].length() > 0 && params[:description].length() > 0
+      @project = Project.find_by_id(params[:id])
+      @project.update(:title => params[:title], :description => params[:description])
+      redirect "/projects/#{@project.id}"
+    else
+      if params[:title].length == 0
+        session[:errors] << "Title Cannot Be Blank"
+      end
+      if params[:description].length() == 0
+        session[:errors] << "Description Cannot Be Blank"
+      end
+      redirect back
+    end
   end
   
   # DELETE: /projects/5/delete
