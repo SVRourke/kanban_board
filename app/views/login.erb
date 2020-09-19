@@ -4,6 +4,12 @@
 <main id="login">
     <form id="login-form" action="/login" method="post">
         <h1>Hello!</h1>
+        <% if session[:errors] %>
+                <% session[:errors].each do |error| %>
+                    <p><%= error %></p>
+                <% end %>
+        <% end %>
+        <% session[:errors] = []%>
         
         <label for="username" >Username</label>      
         <input type="text" name="username" id="username" placeholder="username:"required>
