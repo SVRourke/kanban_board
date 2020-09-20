@@ -7,32 +7,3 @@ form {
     display: flex;
     flex-direction: column;
 }
-#layout__header {
-    max-height: 30vh;
-    width: 50%;
-    margin: 0 auto;
-}
-#layout__header a {
-    text-decoration: none;
-}
-#layout__header a:visited {
-    color: black;
-}
-#layout__header h1 {
-    padding: 1em 0 .4em 0;
-}
-#header__delete-account {
-    border-style: none;
-}
-.header__controls {
-    text-align: center;
-    background-color: white;
-    padding: .5em 1em;
-    font-size: 10px;
-    width: 100px;
-}
-#layout__header nav {
-    justify-content: space-evenly;
-    display: flex;
-    flex-direction: row;
-}
