@@ -11,14 +11,22 @@
 <% if request.path != "/login" && request.path != "/signup" %>
 <%# If the page isn't login or sign up show layout & yield %>
     <header id="layout__header">
-    <% if @project %>
-      <h1><%= @project.title %></h1>
-    <% end %>
+      <% if @project %>
+        <h1><%= @project.title %></h1>
+      <% end %>
     <nav>
         <a class="header__controls" href="/users/<%= current_user.id %>"><%= current_user.username %></a>
         <a class="header__controls" id="header__logout" href="/logout">Log Out</a><br>
+        <a class="header__controls" href="/users/<%= current_user.id %>">My Projects</a>
         <a class="header__controls" id="header__new-project" href="/projects/new">New Project</a>
-
+        <% if @project %>
+          <a class="header__controls" id="header__new-project" href="/projects/<%= @project.id %>/edit">Edit Project</a>
+          <form action="/project/<%= @project.id %>/delete" method="post">
+            <input type="hidden" name="_method" value="delete">
+            <input type="submit" value="Delete Project?">
+          </form>
+          <a class="header__controls" id="header__new-project" href="/projects/<%= @project.id %>/edit">Delete Project</a>
+        <% end %>
         <form action="/users/<%= current_user.id %>/delete" method="post">
             <input type="hidden" name="_method" value="delete">
             <button class="header__controls" id="header__delete-account" type="submit">Delete Account</button>
