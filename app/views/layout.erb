@@ -8,13 +8,14 @@
   </head>
 <body>
 
-  <% if request.path != "/login" && request.path != "/signup" %>
-    <%# If the page isn't login or sign up show layout & yield %>
+<% if request.path != "/login" && request.path != "/signup" %>
+<%# If the page isn't login or sign up show layout & yield %>
     <header id="layout__header">
-      <a href="/users/<%= current_user.id %>">
-        <h1 id="header-username"><%= current_user.username %></h1>
-      </a>
-      <nav>
+    <% if @project %>
+      <h1><%= @project.title %></h1>
+    <% end %>
+    <nav>
+        <a class="header__controls" href="/users/<%= current_user.id %>"><%= current_user.username %></a>
         <a class="header__controls" id="header__logout" href="/logout">Log Out</a><br>
         <a class="header__controls" id="header__new-project" href="/projects/new">New Project</a>
 
