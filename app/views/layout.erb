@@ -8,15 +8,14 @@
   </head>
 <body>
 
+  <!-- If the page isn't login or sign up show layout & yield -->
 <% if request.path != "/login" && request.path != "/signup" %>
-<%# If the page isn't login or sign up show layout & yield %>
-    <%= erb :jumbotron %> 
-    <%= yield %>
-  
-  <% else %>
-    <%# If the page is login or sign up yield only specific page %>
-    <%= yield %>
-  <% end %>
+  <%= erb :jumbotron %> 
+  <%= yield %>
+<!-- If the page is login or sign up yield only specific page -->
+<% else %>
+  <%= yield %>
+<% end %>
         
 
   <%# Footer %>
