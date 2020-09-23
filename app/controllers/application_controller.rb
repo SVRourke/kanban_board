@@ -55,27 +55,13 @@ class ApplicationController < Sinatra::Base
   end
 
   post "/signup" do
-    if !User.find_by_username(params[:username]) && !User.find_by_email(params[:email])
-      @user = User.create(params)
+    @user = User.create(params)
+    if @user.valid?
       session[:user_id] = @user.id
       redirect "/"
     else
-      
-      session[:errors] = Array.new()
-      
-      if User.find_by_username(params[:username])
-        session[:errors] << "Username Taken"
-      end
-      
-      if User.find_by_email(params[:email])
-        session[:errors] << "Email Already In Use"
-      end
-
-      if params[:password].length() < 5
-        session[:errors] << "Password Must Be Longer Than 5 Letters"
-      end
-      
-      redirect "/signup"
+      session[:errors] = Hash(@user.errors)
+      redirect back
     end
   end
 
