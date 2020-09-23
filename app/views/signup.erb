@@ -6,19 +6,23 @@
     <form id="login-form" action="/signup" method="post">
         <h1>Sign Up!</h1>
         
-        <% if session[:errors] %>
-            <% session[:errors].each do |error| %>
-                <p><%= error %></p>
-            <% end %>
-        <% end %>
-        <% session[:errors] = []%>
         <label for="username" >Username</label>      
+        <% if session[:errors][:username] %>
+            <p><%= session[:errors][:username][0].to_s %></p>
+        <% end %>
         <input type="text" name="username" id="username" placeholder="username:"required>
 
-        <label for="email" >Email</label>      
+        <label for="email" >Email</label>
+        <% if session[:errors][:email] %>
+            <p><%= session[:errors][:email][0].to_s %></p>
+        <% end %>
         <input type="text" name="email" id="email" placeholder="Email:"required>
 
         <label for="password">Password</label>
+        <% if session[:errors][:password] %>
+            <p><%= session[:errors][:password][0].to_s %></p>
+        <% end %>
+        <% session[:errors].clear %>
         <input type="password" name="password" id="password" placeholder="password:" required>
 
         <button type="submit" value="submit">Join</button>
