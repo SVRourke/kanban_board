@@ -6,28 +6,25 @@ class ProjectsController < ApplicationController
     erb :"/projects/new.html"
   end
   
+  
   # POST: /projects
   post "/projects" do
-  unauthorized_redirect
-
-    if params[:title].length() > 0
-      @project = Project.create(
-        :title => params[:title],
-        :description => params[:description],
-        :user => current_user
+    unauthorized_redirect
+    
+    @project = Project.new(
+      :title => params[:title],
+      :description => params[:description],
+      :user => current_user
       )
+
+    if @project.valid?
+      @project.save
       redirect "/projects/#{@project.id}"
+
     else
-      session[:errors] = []
-      if params[:title].length() == 0
-        session[:errors] << "Project Must Have Title"
-      end
+      session[:errors] = Hash(@project.errors)
+      redirect back
 
-      if params[:description].length() == 0
-        session[:errors] << "Project Must Have Description"
-      end
-
-      redirect "/projects/new"
     end
   end
   
