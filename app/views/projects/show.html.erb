@@ -4,15 +4,13 @@
 
 <section id="add_task">
     <h4>Add Item</h4>
-        <% if session[:errors] %>
-                <% session[:errors].each do |error| %>
-                    <p><%= error %></p>
-                <% end %>
-            <% end %>
-            <% session[:errors] = Hash.new() %>
+        <% if session[:errors][:content] %>
+            <p><%= session[:errors][:content].first %></p>
+        <% end %>
+        <% session[:errors] = Hash.new() %>
     <form action="/tasks" method="post">
         <input type="hidden" name="project_id" value="<%= @project.id %>">
-        <input type="text" cols="50" name="content" id="content" required>
+        <input type="text" cols="50" name="content" id="content">
         <button type="submit" class="btn btn-primary">Add Task</button>
     </form>       
 </section>
