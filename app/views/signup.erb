@@ -22,7 +22,7 @@
         <% if session[:errors][:password] %>
             <p><%= session[:errors][:password][0].to_s %></p>
         <% end %>
-        <% session[:errors].clear %>
+        <% session[:errors] = Hash.new %>
         <input type="password" name="password" id="password" placeholder="password:" required>
 
         <button type="submit" value="submit">Join</button>
