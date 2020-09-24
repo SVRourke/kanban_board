@@ -4,6 +4,6 @@ class User < ActiveRecord::Base
     validates :email, uniqueness: {message: "Email Already In Use!"}
     validates :password, length: {minimum: 5, message: "Password Must Be Longer Than 5 Characters!"}
 
-    has_many :projects
+    has_many :projects, dependent: :destroy 
     has_many :tasks, through: :projects
 end
