@@ -4,18 +4,21 @@
 <main id="login">
     
     <form id="login-form" action="/projects" method="post">
-        <% if session[:errors] %>
-                <% session[:errors].each do |error| %>
-                    <p><%= error %></p>
-                <% end %>
-            <% end %>
-            <% session[:errors] = []%>
         <h1>new project!</h1>
+        
         <label for="title">Project Name:</label>
+        <% if session[:errors][:title] %>
+            <p><%= session[:errors][:title].first %></p>
+        <% end %>
         <input type="text" name="title" id="title" value="">
-
+        
         <label for="description">Project description:</label>
+        <% if session[:errors][:description] %>
+            <p><%= session[:errors][:description].first %></p>
+        <% end %>
         <input type="text" name="description" id="description" value="">
+        
+        <% session[:errors] = Hash.new() %>
 
         <button type="submit" value="submit">Create Project</button>
     </form>
