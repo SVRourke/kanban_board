@@ -10,24 +10,18 @@ class TasksController < ApplicationController
   post "/tasks" do
     unauthorized_redirect
     @project = Project.find_by_id(params[:project_id])
-    tasks_contents = @project.tasks.collect {|t| t.content}
-    if params[:content].length() > 0 && !tasks_contents.any? {|t| t == params[:content]}
-      @task = Task.create(
-        :user => current_user,
-        :project => @project,
-        :content => params[:content],
-        :doneness => 0
-      )
+    @task = Task.new(
+      :user => current_user,
+      :project => @project,
+      :content => params[:content],
+      :doneness => 0
+    )
+    if @task.valid?
+      @task.save
       redirect "/projects/#{params[:project_id]}"
+    
     else
-      session[:errors] = []
-      if  params[:content].length() == 0
-        session[:errors] << "Task Cannot Be Blank."
-      end
-
-      if tasks_contents.any? {|t| t == params[:content]}
-        session[:errors] << "Task Already In Project."
-      end
+      session[:errors] = Hash(@task.errors)
       redirect back
     end
   end
