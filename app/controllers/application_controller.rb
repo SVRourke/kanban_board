@@ -17,6 +17,7 @@ class ApplicationController < Sinatra::Base
     unauthorized_redirect
     redirect "/users/#{session[:user_id]}"
   end
+
   # -----------------------------
   # login
   # -----------------------------
@@ -55,8 +56,9 @@ class ApplicationController < Sinatra::Base
   end
 
   post "/signup" do
-    @user = User.create(params)
+    @user = User.new(params)
     if @user.valid?
+      @user.save
       session[:user_id] = @user.id
       redirect "/"
     else
@@ -72,7 +74,7 @@ class ApplicationController < Sinatra::Base
   end
 
   def logged_in?
-    !session[:user_id].nil?
+    session[:user_id] != ""
   end
 
   def current_user
