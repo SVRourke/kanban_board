@@ -15,12 +15,10 @@
         </select>
         
         <label for="task[content]">Content</label>
-        <% if session[:errors] %>
-            <% session[:errors].each do |error| %>
-                <p><%= error %></p>
-            <% end %>
+        <% if session[:errors][:content] %>
+            <p><%= session[:errors][:content].first %></p>
         <% end %>
-        <% session[:errors] = []%>        
+        <% session[:errors] = Hash.new %>        
         <textarea name="task[content]" id="content" cols="60" rows="5"><%= @task.content %></textarea>
         <input type="submit" value="Update">
     </form>
