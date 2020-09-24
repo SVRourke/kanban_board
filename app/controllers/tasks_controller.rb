@@ -45,14 +45,6 @@ class TasksController < ApplicationController
       session[:errors] = Hash(@task.errors)
       redirect back
     end
-    # if params[:task][:content].length() > 0
-    #   @task = Task.find_by_id(params[:id])
-    #   @task.update(params[:task])
-    #   redirect "/projects/#{@task.project_id}"
-    # else
-    #   session[:errors] << "Cannot Save Blank Task"
-    #   redirect back
-    # end
   end
 
   # PATCH: /tasks/5
