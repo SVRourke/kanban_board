@@ -9,14 +9,10 @@
 
         <% if @project %>
             <a href="/projects/<%= @project.id %>/edit">Edit Project</a>
-            
-            <form action="/project/<%= @project.id %>/delete" method="post">
+            <form action="/projects/<%= @project.id %>/delete" method="post">
                 <input type="hidden" name="_method" value="delete">
                 <button type="submit" value="Delete Project?">Delete Project?</button>
             </form>
-            
-
-
         <% end %>
 
         <form action="/users/<%= current_user.id %>/delete" method="post">
