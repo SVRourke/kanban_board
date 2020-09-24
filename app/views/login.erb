@@ -9,7 +9,7 @@
                     <p><%= error %></p>
                 <% end %>
         <% end %>
-        <% session[:errors] = []%>
+        <% session[:errors] = Hash.new %>
         
         <label for="username" >Username</label>      
         <input type="text" name="username" id="username" placeholder="username:"required>
