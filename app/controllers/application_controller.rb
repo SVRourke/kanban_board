@@ -15,7 +15,7 @@ class ApplicationController < Sinatra::Base
 
   get "/" do
     unauthorized_redirect
-    redirect "/users/#{session[:user_id]}"
+    redirect "/projects"
   end
 
   get "/login" do
