@@ -2,9 +2,9 @@
 
 <header>
     <nav>
-        <a href="/users/<%= current_user.id %>"><%= current_user.username %></a>
-        <a id="header__logout" href="/logout">Log Out</a><br>
-        <a href="/users/<%= current_user.id %>">My Projects</a>
+        <a href="/projects"><%= current_user.username %></a>
+        <a id="header__logout" href="/logout">Log Out</a>
+        <a href="/projects">My Projects</a>
         <a href="/projects/new">New Project</a>
 
         <% if @project %>
