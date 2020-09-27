@@ -4,7 +4,7 @@
 
 <article id="projects">
     <h2>Your Projects:</h2>
-    <% current_user.projects.each do |project| %>
+    <% @user.projects.each do |project| %>
     <a href="/projects/<%= project.id %>">
         <section class="project-card">
             <h4><%= project.title %></h4>
