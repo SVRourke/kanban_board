@@ -18,9 +18,6 @@ class ApplicationController < Sinatra::Base
     redirect "/users/#{session[:user_id]}"
   end
 
-  # -----------------------------
-  # login
-  # -----------------------------
   get "/login" do
     erb :login
   end
@@ -47,10 +44,6 @@ class ApplicationController < Sinatra::Base
     redirect "/login"
   end
   
-  
-  # -----------------------------
-  # signup
-  # -----------------------------
   get "/signup" do
     erb :signup
   end
