@@ -6,6 +6,12 @@ class ProjectsController < ApplicationController
     erb :"/projects/new.html"
   end
   
+  # GET: /projects
+  get "/projects" do
+    unauthorized_redirect
+    @user = current_user
+    erb :"/projects/index.html"
+  end
   
   # POST: /projects
   post "/projects" do
