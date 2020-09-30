@@ -7,14 +7,19 @@
         <h1>new project!</h1>
         
         <label for="title">Project Name:</label>
-        <% if session[:errors][:title] %>
-            <p><%= session[:errors][:title].first %></p>
+        <% if session.has_key? :errors %>
+            <% if session[:errors].has_key? :title %>
+                <p><%= session[:errors][:title].first %></p>
+            <% end %>
         <% end %>
+        
         <input type="text" name="title" id="title" value="">
         
         <label for="description">Project description:</label>
-        <% if session[:errors][:description] %>
-            <p><%= session[:errors][:description].first %></p>
+        <% if session.has_key? :errors %>
+            <% if session[:errors][:description] %>
+                <p><%= session[:errors][:description].first %></p>
+            <% end %>
         <% end %>
         <input type="text" name="description" id="description" value="">
         
