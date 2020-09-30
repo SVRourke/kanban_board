@@ -9,13 +9,19 @@
         <input type="hidden" name="_method" value="PATCH">
         
         <label for="title">Edit Title:</label>
-        <% if session[:errors][:title] %>
-            <p><%= session[:errors][:title] %></p>
+        <% if session.has_key? :errors %>
+            <% if session[:errors].has_key? :title %>
+                <p><%= session[:errors][:title].first %></p>
+            <% end %>
         <% end %>
         <input type="text" name="title" id="title" value="<%= @project.title %>">
         
         <label for="description">Edit Desc.:</label>
-
+        <% if session.has_key? :errors %>
+            <% if session[:errors].has_key? :description %>
+                <p><%= session[:errors][:description].first %></p>
+            <% end %>
+        <% end %>
         <% session[:errors].clear %>
         <input type="text" name="description" id="description" value="<%= @project.description %>">
         
