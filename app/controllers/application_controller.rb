@@ -61,13 +61,16 @@ class ApplicationController < Sinatra::Base
   end
 
   def unauthorized_redirect
+    3.times {puts ""}
+    puts "session|#{session[:user_id]}|"
+    3.times {puts ""}
     if !logged_in?
       redirect "/login"
     end
   end
 
   def logged_in?
-    session[:user_id] != ""
+    !session[:user_id].nil?
   end
 
   def current_user
